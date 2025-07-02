@@ -1,0 +1,15 @@
+id = "typespec"
+name = "Typespec"
+authors = ["Denis Rhoden Jr. <denis@whisper.markets>"]
+description = "Typespec support."
+repository = "https://github.com/rhodee/zed-typespec"
+schema_version = 1
+version = "0.0.1"
+
+[grammars.typespec]
+repository = "https://github.com/happenslol/tree-sitter-typespec"
+commit = "814c98283fd92a248ba9d49ebfe61bc672a35875"
+
+[language_servers.tsp-server]
+name = "tsp-server"
+language = "Typespec"

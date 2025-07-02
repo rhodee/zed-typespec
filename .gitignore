@@ -1,0 +1,14 @@
+!tests/*.tsp
+.DS_Store
+
+#
+# zed-typespec
+#
+
+extension.wasm
+grammars
+
+#
+# Rust
+#
+target

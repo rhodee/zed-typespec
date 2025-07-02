@@ -1,0 +1,13 @@
+[package]
+name = "zed-typespec"
+version = "0.0.1"
+edition = "2024"
+description = "Typespec support."
+license = "Apache-2.0"
+
+[dependencies]
+zed_extension_api = "0.6.0"
+
+[lib]
+path = "src/tsp-server.rs"
+crate-type = ["cdylib"]

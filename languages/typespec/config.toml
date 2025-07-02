@@ -1,0 +1,5 @@
+name = "Typespec"
+grammar = "typespec"
+tab_size = 2
+path_suffixes = ["tsp", "typespec"]
+line_comments = ["// "]
