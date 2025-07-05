@@ -1,6 +1,6 @@
 {
   "name": "zed-typespec",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
