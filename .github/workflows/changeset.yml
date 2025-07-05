@@ -1,0 +1,38 @@
+---
+name: Version Bump
+on:
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{github.ref }}
+  cancel-in-progress: false
+permissions: {} # reset
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/build-env
+      - uses: jwalton/gh-find-current-pr@master
+        id: find_pr
+        with:
+          # Can be "open", "closed", or "all". Defaults to "open".
+          state: closed
+      - run: echo "current pull_request=${PR}"
+        if: success() && steps.find_pr.outputs.number
+        env:
+          PR: ${{ steps.find_pr.outputs.pr }}
+      - name: Create release pull request
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          title: Release PR ${{ steps.find_pr.outputs.title }}
+          commit: "chore(release): Pull Request ${{ steps.find_pr.outputs.title }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,10 +1,11 @@
+---
 on:
   push:
     tags:
       - "v*"
 
 jobs:
-  homebrew:
+  zed-release:
     name: Release Zed Extension
     runs-on: ubuntu-latest
     steps:

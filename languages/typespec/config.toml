@@ -3,3 +3,13 @@ grammar = "typespec"
 tab_size = 2
 path_suffixes = ["tsp", "typespec"]
 line_comments = ["// "]
+block_comment = ["/** ", " */"]
+
+command = "tsp compile $FILE"
+
+[tests.helloWorld]
+_main = """
+model Hello {
+  id: string;
+}
+"""

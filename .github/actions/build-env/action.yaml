@@ -1,0 +1,27 @@
+name: "build-env"
+description: "environment setup"
+inputs:
+  node-version:
+    description: "Node.js version"
+    default: "24"
+  registry-url:
+    description: "NPM registry"
+    default: "https://registry.npmjs.org"
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v4
+      with:
+        filter: blob:none
+        fetch-depth: 0
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        registry-url: ${{ inputs.registry-url }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+      shell: bash

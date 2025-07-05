@@ -1,5 +1,6 @@
-!tests/*.tsp
 .DS_Store
+
+node_modules
 
 #
 # zed-typespec
